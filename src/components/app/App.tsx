@@ -1,14 +1,13 @@
-import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { RouteType, ROUTES } from '~/const/routes';
 
-interface AppProps {
-  basePath?: string;
-}
-
-function App({ basePath }: AppProps) {
+function App() {
   return (
-    <div>
-      <h1>{basePath}</h1>
-    </div>
+    <Routes>
+      {ROUTES.map(({ path, Element, props }: RouteType, index) => (
+        <Route key={index} path={path} element={<Element {...props} />} />
+      ))}
+    </Routes>
   );
 }
 
