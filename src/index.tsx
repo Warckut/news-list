@@ -8,5 +8,5 @@ const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <App basePath={config.APP_BASE_URL} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const urljoin = require('url-join');
 const webpack = require('webpack');
 const paths = require('./config/paths');
