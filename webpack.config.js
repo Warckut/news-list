@@ -51,18 +51,10 @@ module.exports = (_, argv) => {
           ],
         },
         {
-          test: /\.(scss|css|sass)$/,
+          test: /\.(css)$/,
           use: [
             'style-loader',
             'css-loader',
-            'postcss-loader',
-            'resolve-url-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
           ],
         },
       ],

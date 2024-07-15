@@ -4,8 +4,6 @@ module.exports = {
     es2020: true,
   },
   extends: ['plugin:@web-bee-ru/react'],
-  overrides: [],
-
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -23,7 +21,6 @@ module.exports = {
       alias: {
         map: [
           ['~', './src/'],
-          ['@', './src/'],
         ],
         extensions: ['.ts', '.js', '.tsx'],
       },

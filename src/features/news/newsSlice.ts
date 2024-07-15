@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { News } from './types';
-import type { RootState } from '~/store/store';
+import type { RootState } from '~/store/types';
 
 const usersAdapter = createEntityAdapter<News>();
 

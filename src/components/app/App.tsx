@@ -4,8 +4,8 @@ import { RouteType, ROUTES } from '~/const/routes';
 function App() {
   return (
     <Routes>
-      {ROUTES.map(({ path, Element, props }: RouteType, index) => (
-        <Route key={index} path={path} element={<Element {...props} />} />
+      {ROUTES.map(({ path, getElement }: RouteType) => (
+        <Route key={path} path={path} element={getElement()} />
       ))}
     </Routes>
   );
