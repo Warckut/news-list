@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import '~/index.css';
 
-import App from '~/components/app/App';
+import App from '~/components/App/App';
 import { config } from '~/lifecycle/config';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
