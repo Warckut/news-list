@@ -1,26 +1,24 @@
-import { useRef, useEffect } from 'react';
+import { Container } from '@mui/material';
+
+import Top from './Top';
 import NewsList from '~/components/NewsList/NewsList';
+import { useGetNewsQuery } from '~/api/news/newsSlice';
+import Spinner from '~/components/Loader/Loader';
 
 function Home() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleScroll = (e: any) => {
-      // eslint-disable-next-line no-console
-      console.log(e);
-    };
-
-    const current = ref.current;
-    current?.addEventListener('scroll', handleScroll);
-    return () => current?.removeEventListener('scroll', handleScroll);
-  }, [ref]);
+  const {
+    data: news,
+    isLoading,
+    refetch,
+  } = useGetNewsQuery(undefined, {
+    pollingInterval: 60000,
+  });
 
   return (
-    <div ref={ref} className='container'>
-      <h1>News</h1>
-      <NewsList />
-    </div>
+    <Container>
+      <Top onRefetch={refetch} />
+      {!isLoading && news ? <NewsList news={news} /> : <Spinner /> }
+    </Container>
   );
 }
 
