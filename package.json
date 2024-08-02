@@ -7,8 +7,6 @@
     "dev": "webpack-cli serve --env NODE_ENV=development --mode development",
     "build": "webpack --env NODE_ENV=production --mode production",
     "build:dev": "webpack --env NODE_ENV=development --mode development",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "lint:eslint": "eslint --ext .ts,.tsx,.js,.jsx .",
     "fix:eslint": "eslint --ext .ts,.tsx,.js,.jsx . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,7 +36,6 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-unicorn": "^54.0.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
-    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "react-refresh-typescript": "^2.0.9",
     "style-loader": "^4.0.0",
