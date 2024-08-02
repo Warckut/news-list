@@ -1,29 +1,26 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 import { News } from './types';
 import type { RootState } from '~/store/types';
+import { newsApi } from '~/api/news/newsSlice';
 
-const usersAdapter = createEntityAdapter<News>();
+const newsAdapter = createEntityAdapter<News>();
 
 export const UsersSlice = createSlice({
   name: 'news',
   initialState: {
-    news: usersAdapter.getInitialState({
-      ids: [0, 1, 2],
-      entities: [
-        { id: 1, title: 'news 1', content: 'content' },
-        { id: 2, title: 'news 2', content: 'content' },
-        { id: 3, title: 'news 3', content: 'content' },
-      ],
-    }),
+    news: newsAdapter.getInitialState({}),
   },
-  reducers: {
-    remove: (state, { payload }: PayloadAction<number>) => {
-      usersAdapter.removeOne(state.news, payload);
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addMatcher(newsApi.endpoints.getNews.matchFulfilled, (state, { payload }) => {
+      newsAdapter.addMany(state.news, payload);
+    }).addMatcher(newsApi.endpoints.getNews.matchRejected, () => {
+
+    });
   },
 });
 
-export const selectNews = usersAdapter.getSelectors<RootState>((state) => state.NewsReducer.news);
+export const selectNews = newsAdapter.getSelectors<RootState>((state) => state.NewsReducer.news);
 
 export default UsersSlice.reducer;

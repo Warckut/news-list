@@ -1,7 +1,8 @@
 /* eslint-disable unicorn/filename-case */
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
-import NewPage from '~/pages/new/New';
+import Home from '~/pages/Home/Home';
+import News from '~/pages/News/News';
 
 export interface RouteType {
   path: string;
@@ -9,6 +10,7 @@ export interface RouteType {
 }
 
 export const ROUTES: RouteType[] = [
-  { path: '/', getElement: () => <Navigate to="new" /> },
-  { path: '/new', getElement: () => <NewPage /> },
+  { path: '/', getElement: () => <Navigate to='news' /> },
+  { path: '/news', getElement: () => <Home /> },
+  { path: '/news/:id', getElement: () => <News /> },
 ];

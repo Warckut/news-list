@@ -4,6 +4,7 @@ export interface News {
   user: string;
   time: number;
   points: number;
+  domain: string;
   url: string;
   comments_count: number;
 };

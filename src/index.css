@@ -2,3 +2,34 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+:root {
+  --spacing: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-6: 48px;
+
+  --color-primary: #50657a;
+}
+
+body {
+  background-color: #f3f3f3;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
