@@ -20,13 +20,13 @@ a:visited {
 }
 
 :root {
-  --spacing: 8px;
+  /* --spacing: 8px;
   --spacing-2: 16px;
   --spacing-3: 24px;
   --spacing-4: 32px;
-  --spacing-6: 48px;
+  --spacing-6: 48px; */
 
-  --color-primary: #50657a;
+  /* --color-primary: #50657a; */
 }
 
 body {

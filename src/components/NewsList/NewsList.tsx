@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-import { Card, CardContent, Divider } from '@mui/material';
+import { styled, Card, CardContent, Divider, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import { News } from '~/api/news/types';
@@ -9,14 +8,6 @@ interface NewsListProps {
   news: News[];
 }
 
-const NewsHeading = styled.div`
-  margin-bottom: var(--spacing);
-`;
-
-const ListWrapper = styled(Card)`
-  margin-bottom: var(--spacing-6);
-`;
-
 function NewsList({ news }: NewsListProps) {
   return (
     <ListWrapper>
@@ -24,10 +15,16 @@ function NewsList({ news }: NewsListProps) {
         {news.map(({ id, points, user, time, title, domain }) => (
           <li key={id}>
             <CardContent>
-              <NewsHeading>
+              <Typography
+                variant='h4'
+                sx={{
+                  fontSize: '17px',
+                  marginBottom: (theme) => theme.spacing(),
+                }}
+              >
                 <Link to={`${id}`}>{title}</Link>
                 {domain && <span> ({domain})</span>}
-              </NewsHeading>
+              </Typography>
               <div>
                 <span>
                   {points} point{points > 1 && 's'} by {user}
@@ -44,3 +41,7 @@ function NewsList({ news }: NewsListProps) {
 }
 
 export default NewsList;
+
+const ListWrapper = styled(Card)`
+  margin-bottom: ${({ theme }) => theme.spacing(6)};
+`;

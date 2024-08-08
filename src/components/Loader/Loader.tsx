@@ -1,12 +1,4 @@
-import styled from '@emotion/styled';
-import { Box, CircularProgress } from '@mui/material';
-
-const WrapperSpinner = styled(Box)`
-  display: flex;
-  min-height: 300px;
-  justify-content: center;
-  align-items: center;
-`;
+import { styled, Box, CircularProgress } from '@mui/material';
 
 function Spinner() {
   return (
@@ -17,3 +9,10 @@ function Spinner() {
 }
 
 export default Spinner;
+
+const WrapperSpinner = styled(Box)`
+  display: flex;
+  min-height: 300px;
+  justify-content: center;
+  align-items: center;
+`;

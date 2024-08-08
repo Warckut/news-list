@@ -1,14 +1,5 @@
-import styled from '@emotion/styled';
-import { Button, Stack } from '@mui/material';
-
-const CustomStack = styled(Stack)`
-  margin: var(--spacing-2) 0;
-`;
-
-const Heading = styled.h1`
-  font-weight: 500;
-  color: var(--color-primary);
-`;
+import { styled, Stack, Typography } from '@mui/material';
+import RefetchBtn from '~/components/RefetchBtn/RefetchBtn';
 
 function Top({ onRefetch }: { onRefetch: () => void }) {
   return (
@@ -18,18 +9,23 @@ function Top({ onRefetch }: { onRefetch: () => void }) {
       alignItems='center'
       justifyContent='space-between'
     >
-      <Heading>News</Heading>
-      <Button
-        sx={{ textTransform: 'none', fontSize: '17px' }}
-        variant='outlined'
-        size='large'
-        onClick={onRefetch}
+      <Typography
+        variant='h1'
+        sx={{
+          fontSize: '28px',
+          fontWeight: 500,
+          color: (theme) => theme.palette.primary.main,
+        }}
       >
-        Refetch
-      </Button>
+        News
+      </Typography>
+      <RefetchBtn onClick={onRefetch} />
     </CustomStack>
   );
 }
 
 export default Top;
 
+const CustomStack = styled(Stack)`
+  margin: ${({ theme }) => theme.spacing(2)} 0;
+`;

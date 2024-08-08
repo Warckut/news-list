@@ -7,5 +7,7 @@ export type CommentProps = {
 };
 
 export type CommentListProps = {
+  visibles: Set<number>;
   comments: CommentType[];
+  onChangeVisibility: (id: number) => void;
 };

@@ -1,32 +1,41 @@
-import styled from '@emotion/styled';
 import { useParams } from 'react-router-dom';
-import { Card, Link, CardContent, Container, Stack } from '@mui/material';
+import { useState } from 'react';
+import {
+  styled,
+  Card,
+  Link,
+  CardContent,
+  Container,
+  Stack,
+} from '@mui/material';
 
-import Top from './Top';
 import CommentList from '~/components/CommentList/CommentList';
+import Spinner from '~/components/Loader/Loader';
 import { formatDate } from '~/utils';
 import { useGetCommentsQuery } from '~/api/comments/commentsSlice';
-import Spinner from '~/components/Loader/Loader';
 
-const CustomStack = styled(Stack)({
-  marginTop: 'var(--spacing-2)',
-});
-
-const Heading = styled(Link)({
-  fontSize: '20px',
-  fontWeight: 400,
-});
+import Top from './Top';
 
 function News() {
   const { id } = useParams();
   const { data, isLoading, refetch } = useGetCommentsQuery(Number(id), {
     pollingInterval: 60000,
   });
+  const [visibles, setVisibles] = useState<Set<number>>(new Set());
+
+  const handleChangeVisible = (id: number) => {
+    setVisibles((prevVisibles) => {
+      const newVisibles = new Set(prevVisibles);
+      if (newVisibles.has(id)) newVisibles.delete(id);
+      else newVisibles.add(id);
+      return newVisibles;
+    });
+  };
 
   return (
     <Container>
       <Top onRefetch={refetch} />
-      <Card style={{ marginBottom: 'var(--spacing-6)'}}>
+      <Card sx={{ marginBottom: (theme) => theme.spacing(6) }}>
         <CardContent>
           {!isLoading && data ? (
             <>
@@ -37,7 +46,11 @@ function News() {
                 </span>
                 <span>{data.comments_count} comments:</span>
               </CustomStack>
-              <CommentList comments={data.comments} />
+              <CommentList
+                comments={data.comments}
+                visibles={visibles}
+                onChangeVisibility={handleChangeVisible}
+              />
             </>
           ) : (
             <Spinner />
@@ -49,3 +62,12 @@ function News() {
 }
 
 export default News;
+
+const CustomStack = styled(Stack)`
+  margin-top: ${({ theme }) => theme.spacing(2)};
+`;
+
+const Heading = styled(Link)`
+  font-size: '20px';
+  font-weight: 400;
+`;

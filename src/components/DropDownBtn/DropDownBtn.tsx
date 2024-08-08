@@ -10,9 +10,7 @@ function DropDownBtn({
 }) {
   return (
     <IconButton size='small' onClick={onClick}>
-      <ArrowDropDownIcon
-        style={{ transform: `rotate(${active ? 180 : 0}deg)` }}
-      />
+      <ArrowDropDownIcon sx={{ transform: `rotate(${active ? 180 : 0}deg)` }} />
     </IconButton>
   );
 }
