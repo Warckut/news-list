@@ -1,14 +1,14 @@
 FROM node:18 as build-stage
 
 WORKDIR /app
-COPY . .
+
+COPY package*.json ./
 RUN npm ci
+
+COPY . .
 RUN npm run build
 
-FROM ubuntu:22.04
-
-RUN apt-get update
-RUN apt-get install nginx -y
+FROM nginx:alpine
   
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-stage /app/dist /var/www/html/
