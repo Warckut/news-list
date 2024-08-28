@@ -15,7 +15,7 @@ function CommentItem({ comment, visibles, onChangeVisibility }: CommentProps) {
       <HeadComment>
         <WidgetComment>
           {!visibles.has(id) && comments.length > 0 && (
-            <span>{comments.length}</span>
+            <Typography variant="body1">{comments.length}</Typography>
           )}
           {comments.length > 0 && (
             <DropDownBtn
@@ -24,7 +24,9 @@ function CommentItem({ comment, visibles, onChangeVisibility }: CommentProps) {
             />
           )}
         </WidgetComment>
-        <h5>{user}</h5>
+        <Typography variant="h5" sx={{ fontSize: '14px', fontWeight: 500 }}>
+          {user}
+        </Typography>
       </HeadComment>
       <Typography
         variant='body1'

@@ -6,7 +6,7 @@ function DropDownBtn({
   onClick,
 }: {
   active: boolean;
-  onClick: () => void;
+  onClick: VoidFunction;
 }) {
   return (
     <IconButton size='small' onClick={onClick}>

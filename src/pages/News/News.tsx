@@ -7,6 +7,7 @@ import {
   CardContent,
   Container,
   Stack,
+  Typography,
 } from '@mui/material';
 
 import CommentList from '~/components/CommentList/CommentList';
@@ -40,11 +41,13 @@ function News() {
           {!isLoading && data ? (
             <>
               <CustomStack spacing={1}>
-                <Heading href={data.url}>{data.title}</Heading>
-                <span>
+                <Heading href={data.url} >{data.title}</Heading>
+                <Typography variant="body1">
                   Posted {formatDate(data!.time * 1000)} by {data.user}
-                </span>
-                <span>{data.comments_count} comments:</span>
+                </Typography>
+                <Typography variant="body1">
+                  {data.comments_count} comments:
+                </Typography>
               </CustomStack>
               <CommentList
                 comments={data.comments}
@@ -68,6 +71,8 @@ const CustomStack = styled(Stack)`
 `;
 
 const Heading = styled(Link)`
-  font-size: '20px';
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.palette.primary.main};
+  text-decoration: none;
 `;

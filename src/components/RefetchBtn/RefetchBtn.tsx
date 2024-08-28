@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 
-function RefetchBtn({ onClick }: { onClick: () => void }) {
+function RefetchBtn({ onClick }: { onClick: VoidFunction }) {
   return (
     <Button
       sx={{ textTransform: 'none', fontSize: '17px' }}

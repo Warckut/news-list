@@ -3,7 +3,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled, IconButton, Stack, Typography } from '@mui/material';
 import RefetchBtn from '~/components/RefetchBtn/RefetchBtn';
 
-function Top({ onRefetch }: { onRefetch: () => void }) {
+function Top({ onRefetch }: { onRefetch: VoidFunction }) {
   const navigate = useNavigate();
 
   return (
@@ -21,16 +21,7 @@ function Top({ onRefetch }: { onRefetch: () => void }) {
         onClick={() => navigate(-1)}
       >
         <ArrowBack fontSize='large' />
-        <Typography
-          sx={{
-            marginLeft: (theme) => theme.spacing(),
-            fontSize: '28px',
-            fontWeight: 500,
-            color: (theme) => theme.palette.primary.main,
-          }}
-        >
-          Back
-        </Typography>
+        <CustomTypography>Back</CustomTypography>
       </IconButton>
       <RefetchBtn onClick={onRefetch} />
     </CustomStack>
@@ -38,6 +29,13 @@ function Top({ onRefetch }: { onRefetch: () => void }) {
 }
 
 export default Top;
+
+const CustomTypography = styled(Typography)`
+  margin-left: ${({ theme }) => theme.spacing()};
+  font-size: 28px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.palette.primary.main};
+`;
 
 const CustomStack = styled(Stack)`
   margin: ${({ theme }) => theme.spacing(2)} 0;

@@ -8,8 +8,7 @@
     "build": "webpack --env NODE_ENV=production --mode production",
     "build:dev": "webpack --env NODE_ENV=development --mode development",
     "lint:eslint": "eslint --ext .ts,.tsx,.js,.jsx .",
-    "fix:eslint": "eslint --ext .ts,.tsx,.js,.jsx . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix:eslint": "eslint --ext .ts,.tsx,.js,.jsx . --fix"
   },
   "keywords": [],
   "author": "",

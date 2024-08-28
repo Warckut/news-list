@@ -1,7 +1,7 @@
 import { styled, Stack, Typography } from '@mui/material';
 import RefetchBtn from '~/components/RefetchBtn/RefetchBtn';
 
-function Top({ onRefetch }: { onRefetch: () => void }) {
+function Top({ onRefetch }: { onRefetch: VoidFunction }) {
   return (
     <CustomStack
       spacing={{ xs: 1, sm: 2 }}
